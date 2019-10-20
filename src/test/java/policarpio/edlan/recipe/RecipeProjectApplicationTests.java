@@ -1,4 +1,4 @@
-package policarpio.edlan.recipeproject;
+package policarpio.edlan.recipe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
