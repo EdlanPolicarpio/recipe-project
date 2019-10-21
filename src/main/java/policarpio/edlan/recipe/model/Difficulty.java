@@ -1,4 +1,5 @@
 package policarpio.edlan.recipe.model;
 
-public class Difficulty {
+public enum Difficulty {
+    EASY, MODERATE, HARD
 }
