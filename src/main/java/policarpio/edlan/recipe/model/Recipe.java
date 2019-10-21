@@ -1,7 +1,5 @@
 package policarpio.edlan.recipe.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -27,6 +25,11 @@ public class Recipe {
     private Note note;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredient;
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+               joinColumns = @JoinColumn(name="recipe_id"),
+               inverseJoinColumns = @JoinColumn(name="category_id"))
+    private Set<Category> categorySet;
 
     public long getId() {
         return id;
@@ -123,5 +126,12 @@ public class Recipe {
     public void setIngredient(Set<Ingredient> ingredient) {
         this.ingredient = ingredient;
     }
-}
 
+    public Set<Category> getCategorySet() {
+        return categorySet;
+    }
+
+    public void setCategorySet(Set<Category> categorySet) {
+        this.categorySet = categorySet;
+    }
+}
