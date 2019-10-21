@@ -3,6 +3,7 @@ package policarpio.edlan.recipe.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -23,6 +24,8 @@ public class Recipe {
     private byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredient;
 
     public long getId() {
         return id;
@@ -111,4 +114,13 @@ public class Recipe {
     public void setNote(Note note) {
         this.note = note;
     }
+
+    public Set<Ingredient> getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Set<Ingredient> ingredient) {
+        this.ingredient = ingredient;
+    }
 }
+
